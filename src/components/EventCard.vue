@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { Event } from '@/type'
-defineProps<{
-  event: Event
-}>{}
+import EventMeta from '../components/EventMeta.vue'
+
+const props = defineProps<{ event: Event }>()
+
 // const event = ref({
 //   id: 5928101,
 //   category: 'animal welfare',
@@ -18,15 +19,19 @@ defineProps<{
 </script>
 
 <template>
-  <div class="event-class">
-    <div class="event-card">
-      <h2>{{ event.title }}</h2>
-      <span>@{{ event.time }} on {{ event.date }}</span>
-    </div>
+  <div class="event-card">
+    <h2>{{ event.title }}</h2>
+    <p>{{ event.date }} @ {{ event.time }}</p>
+    <EventMeta :event="event" />
   </div>
 </template>
 
 <style scoped>
+.event-meta {
+  text-align: right;
+  font-size: 1rem;
+  margin-top: 8px;
+}
 .event-card {
     padding: 20px;
     width: 250px;
