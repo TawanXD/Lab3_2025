@@ -32,6 +32,50 @@
       "time": "11:00",
       "petsAllowed": false,
       "organizer": "Carey Wales"
+    },
+    {
+      "id": 5928102,
+      "category": "education",
+      "title": "Science Fair for Kids",
+      "description": "Interactive experiments and fun learning stations for young explorers.",
+      "location": "Bright Minds School",
+      "date": "February 12, 2022",
+      "time": "09:00",
+      "petsAllowed": false,
+      "organizer": "Dr. Lumen Ray"
+    },
+    {
+      "id": 5928103,
+      "category": "art",
+      "title": "Street Mural Jam",
+      "description": "Collaborate on a massive community mural to brighten public walls.",
+      "location": "Canvas Alley",
+      "date": "April 8, 2022",
+      "time": "15:00",
+      "petsAllowed": true,
+      "organizer": "Hue Blends"
+    },
+    {
+      "id": 5928104,
+      "category": "wellness",
+      "title": "Sunrise Yoga Meetup",
+      "description": "Stretch and breathe in nature with certified instructors.",
+      "location": "Lotus Park",
+      "date": "May 20, 2022",
+      "time": "06:30",
+      "petsAllowed": false,
+      "organizer": "Zen Motion"
+    },
+    {
+      "id": 5928105,
+      "category": "music",
+      "title": "Open Mic Night",
+      "description": "Local talent showcase—sing, play, or perform your heart out.",
+      "location": "Echo Chamber Café",
+      "date": "June 3, 2022",
+      "time": "19:00",
+      "petsAllowed": true,
+      "organizer": "Rhythm Circle"
     }
   ]
 }
