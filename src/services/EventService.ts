@@ -17,3 +17,7 @@ export default {
         return apiClient.get('/events/'+id);
     },
 };
+
+export const getEventById = (id: string) => {
+  return apiClient.get(`/events/${id}`)
+}
