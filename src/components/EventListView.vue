@@ -4,15 +4,18 @@
   import type { Event } from '../type.ts'
   // import { ref } from 'vue'
   import { ref, onMounted } from 'vue'
-  import axios from 'axios'
+  //import axios from 'axios'
+  import EventService from '../services/EventService.ts'
 
   const events = ref<Event[]>(null)
 
   onMounted(()=> {
-    axios
-      .get('https://my-json-server.typicode.com/TawanXD/Lab3_2025/events')
+  //  axios
+  //    .get('https://my-json-server.typicode.com/TawanXD/Lab3_2025/events')
+    EventService.getEvents()
       .then((response) => {
-        console.log(response.data)
+        //console.log(response.data)
+        events.value = response.data
       })
       .catch((error) => {
         console.error('ERROR!', error)
