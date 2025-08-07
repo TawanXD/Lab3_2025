@@ -3,20 +3,18 @@ import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
-<div id="layout">
+  <div id="layout">
     <header>
-        <div class="wrapper">
-            <nav>
-                <RouterLink :to="{ name: 'EventList' }">Event</RouterLink> | 
-                <RouterLink :to="{ name: 'About' }">About</RouterLink> | 
-                <RouterLink :to="{ name: 'StudentList' }">Students</RouterLink>
-            </nav>
-        </div>
+      <div class="wrapper">
+        <nav>
+          <RouterLink :to="{ name: 'EventList', query: { size: 2 } }">Event</RouterLink> |
+          <RouterLink :to="{ name: 'About' }">About</RouterLink> |
+          <RouterLink :to="{ name: 'StudentList' }">Students</RouterLink>
+        </nav>
+      </div>
     </header>
-    <!-- <h1>Events For Good</h1>
-      new element -->
     <RouterView />
-</div>
+  </div>
 </template>
 
 <style>

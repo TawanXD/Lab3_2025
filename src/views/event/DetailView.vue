@@ -15,7 +15,7 @@ const props = defineProps({
 })
 
 onMounted(async () => {
-  EventService.getEventById(props.id)
+  EventService.getEventById(parseInt(props.id))
     .then((response) => {
       event.value = response.data
     })
