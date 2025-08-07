@@ -1,15 +1,21 @@
-import { createRouter, createWebHistory } from "vue-router"
+
+import { createRouter, createWebHistory, type RouteLocationNormalized } from "vue-router"
 import EventListView from "../components/EventListView.vue"
 import AboutView from "../components/AboutView.vue"
-import EventCard from "../components/EventCard.vue"
+//import EventCard from "../components/EventCard.vue"
 import StudentList from "../student/StudentList.vue"
 import EventDetailView from "../views/EventDetailView.vue"
 
+
+
 const routes = [
   {
-    path: "/",
+    path: '/',
     name: 'event-list-view',
-    component: EventListView
+    component: EventListView,
+    props: (route: RouteLocationNormalized) => ({
+      page: parseInt(route.query.page?.toString() || '1')
+    })
   },
   {
     path: "/about", 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import Event from '../types/Event'
+//import Event from '../types/Event'
+import { type Event } from '../types/Event'
 import EventDetailView from '../views/EventDetailView.vue'
 import EventMeta from '../components/EventMeta.vue'
 
