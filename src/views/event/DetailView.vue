@@ -7,7 +7,10 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const props = defineProps<{ 
-  event: Event}>()
+  event: Event
+  id: string
+}>()
+
 const { event } = toRefs(props) 
 </script>
 
