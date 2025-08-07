@@ -9,6 +9,7 @@ import EventRegisterView from "../views/event/RegisterView.vue"
 import EventEditView from "../views/event/EditView.vue"
 import EventLayoutView from "../views/event/LayoutView.vue"
 import NotFoundView from "../views/NotFoundView.vue"
+import NetworkErrorView from "../views/NetworkErroeView.vue"
 
 const routes = [
   {
@@ -34,6 +35,11 @@ const routes = [
     path: '/:catchAll(.*)',
     name: 'not-found',
     component: NotFoundView
+  },
+  {
+    path: '/network-error',
+    name: 'network-error-view',
+    component: NetworkErrorView
   },
   {
     path: "/students",
