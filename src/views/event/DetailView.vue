@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { toRefs, onMounted, defineProps } from 'vue'
 import { useRoute } from 'vue-router'
-//import {type Event } from '../types/Event'
-//import EventService from '../../services/EventService'
-//import { getEventById } from '../services/EventService'
+import {type Event } from '../types/Event'
+import EventService from '../../services/EventService'
+import { getEventById } from '../../services/EventService'
 
 const route = useRoute()
 const props = defineProps<{ 
