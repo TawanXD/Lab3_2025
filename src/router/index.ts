@@ -1,5 +1,5 @@
 
-import { createRouter, createWebHistory, type RouteLocationNormalized } from "vue-router"
+import { createRouter, createWebHistory } from "vue-router"
 import EventListView from "../views/EventListView.vue"
 import AboutView from "../views/AboutView.vue"
 //import EventCard from "../components/EventCard.vue"
@@ -13,6 +13,7 @@ import NetworkErrorView from "../views/NetworkErroeView.vue"
 import nProgress from 'nprogress'
 import EventService from "../services/EventService"
 import { useEventStore } from "../stores/event"
+import type { RouteLocationNormalized, RouteLocationNormalizedLoaded } from 'vue-router'
 
 const routes = [
   {
@@ -60,6 +61,7 @@ const routes = [
     beforeEnter: (to: RouteLocationNormalized) => {
       const id = parseInt(to.params.id as string)
       const eventStore = useEventStore()
+
       return EventService.getEvent(1, id)
         .then((response) => {
           eventStore.setEvent(response.data)
@@ -94,7 +96,18 @@ const routes = [
         component: EventEditView,
         props: true
       }
-    ]
+    ],
+    scrollBehavior(
+      to: RouteLocationNormalized,
+      from: RouteLocationNormalized,
+      savedPosition: { left: number; top: number } | null
+    ) {
+      if (savedPosition) {
+        return savedPosition
+      } else if (to.hash) {
+        return { top: 0 }
+      }
+    }
   },
 ]
 
