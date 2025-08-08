@@ -4,18 +4,20 @@ import { toRefs } from 'vue'
 import { type Event } from '../types/Event'
 import EventService from '../services/EventService'
 import { useRouter } from 'vue-router'
+import { useMessageStore } from '@/stores/message'
 
 const props = defineProps<{
     event: Event
     id: string
 }>()
-const { event } = toRefs(props) 
+const { event } = toRefs(props)
 const router = useRouter()
+const store = useMessageStore()
 const register = () => {
-    router.push({
-        name: 'event-detail-view',
-    })
-
+    setTimeout(() => {
+        store.updateMessage('Data has been updated')
+    },3000)
+        router.push({ name: 'event-detail-view', params: { id: props.id } })
 }
 
 </script>

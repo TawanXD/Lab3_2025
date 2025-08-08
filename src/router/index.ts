@@ -10,15 +10,16 @@ import EventEditView from "../views/event/EditView.vue"
 import EventLayoutView from "../views/event/LayoutView.vue"
 import NotFoundView from "../views/NotFoundView.vue"
 import NetworkErrorView from "../views/NetworkErroeView.vue"
+import nProgress from 'nprogress'
+import EventService from "../services/EventService"
+
 
 const routes = [
   {
     path: '/',
     name: 'event-list-view',
     component: EventListView,
-    // props: (route: RouteLocationNormalized) => ({
-    //   page: parseInt(route.query.page?.toString() || '1')
-    // })
+
   },
   {
     path: "/about",
@@ -56,6 +57,25 @@ const routes = [
     name: 'event-layout-view',
     component: EventLayoutView,
     props: true,
+    beforeEnter: (to: RouteLocationNormalized) => {
+      const id = parseInt(to.params.id as string)
+      // Provide appropriate perPage and page values, e.g., perPage = 1, page = id
+      return EventService.getEvent(1, id)
+        .then((response) => {
+          to.meta.event = response.data
+          return true
+        })
+        .catch((error) => {
+          if (error.response && error.response.status === 404) {
+            return {
+              name: '404-resource-view',
+              params: { resource: 'event' }
+            }
+          } else {
+            return { name: 'network-error-view' }
+          }
+        })
+    },
     children: [
       {
         path: '',
@@ -82,4 +102,14 @@ const routes = [
 export const router = createRouter({
   history: createWebHistory(),
   routes
+
 })
+router.beforeEach(() => {
+  nProgress.start()
+})
+
+
+router.afterEach(() => {
+  nProgress.done()
+})
+

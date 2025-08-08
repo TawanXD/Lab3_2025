@@ -30,6 +30,7 @@ watchEffect(() => {
     .catch((error) => {
       console.error('ERROR!', error)
     })
+
 })
 
 function updateSize(newSize: number) {
@@ -55,20 +56,12 @@ function updateSize(newSize: number) {
   <div class="events">
     <EventCard v-for="event in events" :key="event.id" :event="event" />
     <div class="pagination">
-      <RouterLink
-        id="page-prev"
-        :to="{ name: 'event-list-view', query: { page: page - 1, size: pageSize } }"
-        rel="prev"
-        v-if="page > 1"
-      >
+      <RouterLink id="page-prev" :to="{ name: 'event-list-view', query: { page: page - 1, size: pageSize } }" rel="prev"
+        v-if="page > 1">
         &#60;Prev Page
       </RouterLink>
-      <RouterLink
-        id="page-next"
-        :to="{ name: 'event-list-view', query: { page: page + 1, size: pageSize } }"
-        rel="next"
-        v-if="hasNextPage"
-      >
+      <RouterLink id="page-next" :to="{ name: 'event-list-view', query: { page: page + 1, size: pageSize } }" rel="next"
+        v-if="hasNextPage">
         Next Page &#62;
       </RouterLink>
     </div>
