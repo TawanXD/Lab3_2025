@@ -4,6 +4,7 @@ import { storeToRefs } from 'pinia'
 
 const eventStore = useEventStore()
 const { event } = storeToRefs(eventStore)
+console.log('parent event:', eventStore.events)
 
 
 

@@ -53,7 +53,7 @@ function updateSize(newSize: number) {
     <option :value="10">10</option>
   </select>
 
-  <div class="events">
+  <div class="flex flex-col items-center">
     <EventCard v-for="event in events" :key="event.id" :event="event" />
     <div class="pagination">
       <RouterLink id="page-prev" :to="{ name: 'event-list-view', query: { page: page - 1, size: pageSize } }" rel="prev"
@@ -69,11 +69,6 @@ function updateSize(newSize: number) {
 </template>
 
 <style scoped>
-.events {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 .pagination {
   display: flex;
