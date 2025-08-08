@@ -12,7 +12,7 @@ import NotFoundView from "../views/NotFoundView.vue"
 import NetworkErrorView from "../views/NetworkErroeView.vue"
 import nProgress from 'nprogress'
 import EventService from "../services/EventService"
-
+import { useEventStore } from "../stores/event"
 
 const routes = [
   {
@@ -59,11 +59,10 @@ const routes = [
     props: true,
     beforeEnter: (to: RouteLocationNormalized) => {
       const id = parseInt(to.params.id as string)
-      // Provide appropriate perPage and page values, e.g., perPage = 1, page = id
+      const eventStore = useEventStore()
       return EventService.getEvent(1, id)
         .then((response) => {
-          to.meta.event = response.data
-          return true
+          eventStore.setEvent(response.data)
         })
         .catch((error) => {
           if (error.response && error.response.status === 404) {
